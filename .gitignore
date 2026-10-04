@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+work/
+reports/
+*.dmp
+*.mdmp
+snapshot.json
+findings.json
+report.html
+report.md
+comparison.json
+!examples/demo-snapshot.json

@@ -1,0 +1,11 @@
+{
+  "synthetic": true,
+  "comparison": "Entire compact-serialized snapshot vs one crash-focused compact handoff",
+  "language": "en",
+  "budget_chars": 2400,
+  "snapshot_chars": 227325,
+  "summary_chars": 1034,
+  "character_reduction_percent": 99.55,
+  "summary_truncated": false,
+  "limitations": "Character payload comparison only. No actual model tokens, bill, accuracy, total-session saving or plain-Codex baseline measured."
+}

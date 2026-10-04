@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 340" role="img" aria-labelledby="title desc">
+  <title id="title">Windows Driver Doctor evidence pipeline</title>
+  <desc id="desc">Local evidence is collected, deterministically summarized, handed to an agent within a context budget, and verified with before-after comparisons. Repair and screen permissions are separate.</desc>
+  <rect width="1080" height="340" rx="20" fill="#102c3b"/>
+  <text x="40" y="58" fill="#eef7fb" font-family="Segoe UI,Arial,sans-serif" font-size="28" font-weight="700">WINDOWS DRIVER DOCTOR</text>
+  <text x="40" y="91" fill="#b0cbd6" font-family="Segoe UI,Arial,sans-serif" font-size="17">Local evidence · Bounded context · Reproducible follow-up</text>
+  <g font-family="Segoe UI,Arial,sans-serif">
+    <rect x="40" y="132" width="224" height="115" rx="12" fill="#1d4659"/>
+    <rect x="300" y="132" width="224" height="115" rx="12" fill="#1d4659"/>
+    <rect x="560" y="132" width="224" height="115" rx="12" fill="#17645e"/>
+    <rect x="820" y="132" width="220" height="115" rx="12" fill="#1d4659"/>
+    <g fill="#ffffff" font-size="19" font-weight="600"><text x="60" y="167">1. Collect</text><text x="320" y="167">2. Link evidence</text><text x="580" y="167">3. Reason</text><text x="840" y="167">4. Verify</text></g>
+    <g fill="#d5e5ed" font-size="15"><text x="60" y="199">Devices · Drivers · Events</text><text x="60" y="224">Read-only PowerShell</text><text x="320" y="199">Facts · Missing checks</text><text x="320" y="224">Offline Python analysis</text><text x="580" y="199">Compact model handoff</text><text x="580" y="224">Targeted evidence retrieval</text><text x="840" y="199">Snapshots · Changes</text><text x="840" y="224">Observation window</text></g>
+    <g fill="#7fbab5"><path d="M274 183h16l-6-6v12z"/><path d="M534 183h16l-6-6v12z"/><path d="M794 183h16l-6-6v12z"/></g>
+    <text x="40" y="291" fill="#b0cbd6" font-size="15">English-first reports + Chinese switching | No automatic repair, upload, elevation or screen control</text>
+  </g>
+</svg>

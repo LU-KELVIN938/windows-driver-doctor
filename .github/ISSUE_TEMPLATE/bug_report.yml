@@ -1,0 +1,24 @@
+name: Bug report
+description: Report a reproducible diagnostic or compatibility problem
+body:
+  - type: markdown
+    attributes:
+      value: "Use redacted text or synthetic fixtures. Do not attach real dumps, snapshots, serials, hardware IDs, tokens or recovery keys."
+  - type: textarea
+    id: symptom
+    attributes:
+      label: Problem / 问题
+      description: What did you expect and what happened?
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Windows / Python / PowerShell versions
+  - type: textarea
+    id: steps
+    attributes:
+      label: Minimal reproduction / 最小复现
+      description: Command, sanitized error and preferably a synthetic fixture.
+    validations:
+      required: true

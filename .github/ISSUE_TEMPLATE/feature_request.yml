@@ -1,0 +1,15 @@
+name: Feature request
+description: Suggest a diagnostic capability or user-experience improvement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: User problem / 用户问题
+      description: Describe the symptom and evidence this feature should help interpret.
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Desired behavior / 希望的行为
+      description: Include expected facts, uncertainty and operation boundaries.

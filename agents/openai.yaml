@@ -1,0 +1,4 @@
+interface:
+  display_name: "Windows Driver Doctor"
+  short_description: "Evidence-based Windows driver and crash diagnostics"
+  default_prompt: "Use $windows-driver-doctor to diagnose my Windows device or driver issue and prepare an evidence-based report."

@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-10-04T10:00:00+00:00",
+  "machine_id": "9f893d1216158201",
+  "synthetic": true,
+  "collection": {"days": 14, "max_events_per_log": 200, "boot_mode": "unknown", "note": "Synthetic fixture; no real computer was inspected."},
+  "sections": {
+    "system": {"status": "ok", "reason": "", "data": [{"os": "Windows 11 (synthetic)", "version": "10.0", "build": "demo", "manufacturer": "Example OEM", "model": "Example workstation", "bios_version": "DEMO-1.0", "last_boot": "2026-10-04T09:00:00+00:00"}]},
+    "devices": {"status": "ok", "reason": "", "data": [
+      {"device_key": "aabbccdd00112233", "name": "Example Wi-Fi adapter", "class": "Net", "present": true, "problem_code": 10, "status": "Error"},
+      {"device_key": "aabbccdd00112244", "name": "Previously attached USB dock", "class": "USB", "present": false, "problem_code": 45, "status": "Unknown"}
+    ]},
+    "drivers": {"status": "ok", "reason": "", "data": [{"device_key": "aabbccdd00112233", "device_name": "Example Wi-Fi adapter", "version": "1.2.3.4", "provider": "Example Vendor", "date": "2025-01-01", "inf": "oem42.inf", "signed": true, "driver_file": "examplewifi.sys"}]},
+    "driver_events": {"status": "ok", "reason": "", "data": [{"device_key": "aabbccdd00112233", "id": 400, "record_id": 123, "time": "2026-10-03T15:00:00+00:00", "provider": "Microsoft-Windows-Kernel-PnP", "inf": "oem42.inf", "version": "1.2.3.4", "source": "Synthetic configuration event"}]},
+    "events": {"status": "ok", "reason": "", "data": [
+      {"log": "System", "provider": "Microsoft-Windows-WER-SystemErrorReporting", "id": 1001, "record_id": 100, "time": "2026-10-04T09:00:00+00:00", "level": 2, "bugcheck_code": 159},
+      {"log": "System", "provider": "Microsoft-Windows-Kernel-Power", "id": 41, "record_id": 101, "time": "2026-10-04T09:00:01+00:00", "level": 1, "bugcheck_code": 159}
+    ]},
+    "boot": {"status": "ok", "reason": "", "data": [
+      {"record_id": 201, "time": "2026-10-04T09:03:00+00:00", "boot_ms": 45000, "main_path_ms": 25000, "post_boot_ms": 20000},
+      {"record_id": 200, "time": "2026-10-03T09:03:00+00:00", "boot_ms": 30000, "main_path_ms": 18000, "post_boot_ms": 12000}
+    ]},
+    "dumps": {"status": "not_verified", "reason": "Synthetic example of restricted dump metadata; no dump was read.", "data": []},
+    "resource": {"status": "ok", "reason": "", "data": [{"total_memory_kb": 16777216, "free_memory_kb": 8388608, "commit_percent": 45, "cpu_percent": 8}]},
+    "disks": {"status": "ok", "reason": "", "data": [{"name": "Example SSD", "health": "Healthy", "operational": "OK", "bytes": 1000000000000}]}
+  }
+}
