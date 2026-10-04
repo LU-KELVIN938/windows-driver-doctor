@@ -15,7 +15,7 @@ Important section fields:
 - `disks`: `name`, `health`, `operational`, `bytes`; `disk_reliability` supplies observed counters separately.
 - `resource`: `total_memory_kb`, `free_memory_kb`, `commit_percent`, plus best-effort CPU fields.
 
-Other section names: `system`, `gpu`, `audio`, `usb`, `network`, `battery`, `startup`, `services`, `tasks`, `boot_components`, `security`. Original source state is preserved where supported.
+Other section names: `system`, `gpu`, `audio`, `usb`, `network`, `battery`, `battery_health`, `volumes`, `updates`, `startup`, `services`, `tasks`, `boot_components`, `security`. Original source state is preserved where supported. Battery full/design capacity is reported only when the WMI provider supplies it. QuickFixEngineering is a partial update inventory, not a complete Windows Update history.
 
 Reports include a `findings` list with stable `id`, `severity` (`warning|info`), `confidence` (`observed|hypothesis|incomplete`), English/Chinese `title`, `detail` and `next_step` maps, plus bounded `evidence`. Findings don't represent a health score. `debugger` and `comparison` are optional. HTML displays selected inventory; detailed sanitized evidence remains in `findings.json`/`snapshot.json`.
 

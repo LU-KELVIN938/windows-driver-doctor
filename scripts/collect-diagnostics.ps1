@@ -190,6 +190,32 @@ Invoke-Section 'resource' {
     [ordered]@{ total_memory_kb = $os.TotalVisibleMemorySize; free_memory_kb = $os.FreePhysicalMemory
         commit_percent = $memory.PercentCommittedBytesInUse; cpu_percent = $cpu.PercentProcessorTime }
 }
+Invoke-Section 'volumes' {
+    foreach ($item in @(Get-CimInstance Win32_LogicalDisk -Filter 'DriveType=3')) {
+        [ordered]@{ mount = $item.DeviceID; filesystem = $item.FileSystem; bytes = $item.Size; free_bytes = $item.FreeSpace }
+    }
+}
+Invoke-Section 'battery_health' {
+    $full = @(Get-CimInstance -Namespace 'root/wmi' -ClassName BatteryFullChargedCapacity -ErrorAction Stop)
+    foreach ($item in @(Get-CimInstance -Namespace 'root/wmi' -ClassName BatteryStaticData -ErrorAction Stop)) {
+        $match = @($full | Where-Object { $_.InstanceName -eq $item.InstanceName } | Select-Object -First 1)
+        $capacity = $null
+        if ($match.Count -gt 0) { $capacity = $match[0].FullChargedCapacity }
+        $percent = $null
+        if ($item.DesignedCapacity -gt 0 -and $capacity -gt 0) {
+            $percent = [math]::Round(100.0 * $capacity / $item.DesignedCapacity, 1)
+        }
+        [ordered]@{ battery_key = Get-Key $item.InstanceName; design_capacity = $item.DesignedCapacity
+            full_charge_capacity = $capacity; full_to_design_percent = $percent }
+    }
+}
+Invoke-Section 'updates' {
+    [ordered]@{ source = 'Reboot flags'; windows_update_reboot_required = [bool](Test-Path -LiteralPath 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update\RebootRequired')
+        servicing_reboot_pending = [bool](Test-Path -LiteralPath 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\RebootPending') }
+    foreach ($item in @(Get-CimInstance Win32_QuickFixEngineering)) {
+        [ordered]@{ source = 'QuickFixEngineering (not complete update history)'; hotfix = $item.HotFixID; installed_on = [string]$item.InstalledOn }
+    }
+}
 
 Invoke-Section 'startup' {
     foreach ($item in @(Get-CimInstance Win32_StartupCommand)) {

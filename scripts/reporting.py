@@ -41,7 +41,9 @@ SECTIONS = {
     'tasks': ('Boot / logon tasks', '开机 / 登录任务'), 'events': ('Event timeline', '事件时间线'),
     'driver_events': ('Device configuration timeline', '设备配置时间线'),
     'boot': ('Boot measurements', '开机观测'), 'boot_components': ('Boot components', '开机组件'),
-    'dumps': ('Dump metadata only', '仅转储文件元数据'), 'security': ('Security context', '安全上下文')
+    'dumps': ('Dump metadata only', '仅转储文件元数据'), 'security': ('Security context', '安全上下文'),
+    'volumes': ('Local volume space', '本地磁盘空间'), 'battery_health': ('Battery capacity evidence', '电池容量证据'),
+    'updates': ('Update and reboot context', '更新与重启上下文')
 }
 
 ZH_FIELDS = {'name': '名称', 'class': '类别', 'present': '已连接', 'problem_code': '故障代码', 'status': '状态',

@@ -30,7 +30,7 @@ If PnP presence and WMI information disagree, report the disagreement rather tha
 - **Sleep/wake:** Power-Troubleshooter 1, Kernel-Power, BugCheck 0x9F/0x133 evidence. Use device stack/IRP details only when available; do not disable sleep, hibernation and Fast Startup together as a default workaround.
 - **Storage:** Get-PhysicalDisk health and operational state, reliability counters if readable, disk/Ntfs/storport events. SMART unavailable is not SMART healthy. Ask about backup before invasive disk repair.
 - **Firmware/TPM:** BIOS version, board model, TPM availability and BitLocker status. If a provisioning service repeatedly times out, verify exact OEM firmware/CSME advisories. Never clear TPM or change firmware as a shortcut.
-- **Battery/temperature:** report only observed values. Battery charge is not battery wear. A battery report or already-authorized sensor tool can supply design/full-charge capacity and temperature; collection never installs one automatically.
+- **Battery/temperature:** report only observed values. Battery charge is not battery wear. The optional WMI capacity provider can supply design/full-charge capacity; unavailable readings are marked explicitly. An already-authorized sensor tool can supply temperatures; collection never installs one automatically.
 
 ## Known issues
 
