@@ -224,6 +224,6 @@ Run `python scripts/doctor.py COMMAND --help` for exact options. Collection supp
 
 ## Project status and contributions
 
-Version 0.1.0 is an initial implementation with synthetic behavior tests and Windows CI coverage. Real-world compatibility and diagnostic accuracy need more incident feedback. Useful contributions include a minimal synthetic reproducer, a provider-specific parser, bilingual improvements or verified advisory matching. See [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md) and [validation details](docs/VALIDATION.md).
+This project is an early implementation with synthetic behavior tests and a Windows CI workflow. Real-world compatibility and diagnostic accuracy need more incident feedback. Useful contributions include a minimal synthetic reproducer, a provider-specific parser, bilingual improvements or verified advisory matching. See [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md) and [validation details](docs/VALIDATION.md).
 
 If the workflow helps you, a star makes the project easier to discover. Redacted reproducible issues and focused pull requests are especially useful for improving its reliability.

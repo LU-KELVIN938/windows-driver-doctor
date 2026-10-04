@@ -2,7 +2,7 @@
 
 ## What is checked
 
-The local standard-library test suite checks 32 behaviors:
+The local standard-library test suite contains 33 tests. All 33 pass locally on Windows; Linux skips the Windows-only collector test:
 
 - Detached/code-45 devices are not active failures.
 - Presence uncertainty remains incomplete evidence.
@@ -24,6 +24,7 @@ The local standard-library test suite checks 32 behaviors:
 - Compact summaries and evidence exports obey context limits.
 - Vendor ranges are inclusive, malformed versions are incomplete and non-HTTPS URLs are rejected.
 - Offline CLI writes hash-verifiable manifests and refuses accidental overwrite.
+- The PowerShell collector executes against synthetic providers, checking device errors, crash codes, battery capacity, boot timing and unavailable security evidence without inspecting the local PC.
 
 Run `python -m unittest discover -s tests -v`. See the exact cases in [tests/test_doctor.py](../tests/test_doctor.py). As tests grow, the runner output is the authoritative count.
 

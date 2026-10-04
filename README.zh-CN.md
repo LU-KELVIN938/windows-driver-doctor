@@ -207,6 +207,6 @@ python scripts/doctor.py dump --dump "D:\evidence\crash.dmp" `
 
 ## 项目状态与贡献
 
-0.1.0 是初始版本，提供模拟行为测试与 Windows CI 检查；真实设备兼容性和根因判断准确率仍需要案例反馈。欢迎提供不含隐私的最小复现、事件解析改进、双语文本或可核实的厂商公告。见[贡献指南](CONTRIBUTING.md)、[隐私说明](SECURITY.md)和[验证细节](docs/VALIDATION.md)。
+项目目前处于早期阶段，提供模拟行为测试与 Windows CI 工作流；真实设备兼容性和根因判断准确率仍需要案例反馈。欢迎提供不含隐私的最小复现、事件解析改进、双语文本或可核实的厂商公告。见[贡献指南](CONTRIBUTING.md)、[隐私说明](SECURITY.md)和[验证细节](docs/VALIDATION.md)。
 
 如果它对你有帮助，欢迎 star；带有脱敏复现材料的 issue 和聚焦的 PR 更能帮助项目提高可靠性。

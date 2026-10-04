@@ -6,6 +6,8 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import os
+import shutil
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
@@ -228,6 +230,19 @@ class AdvisoryTests(unittest.TestCase):
 
 
 class CliTests(unittest.TestCase):
+    @unittest.skipUnless(os.name == 'nt' and shutil.which('powershell.exe'), 'Synthetic PowerShell smoke test requires Windows PowerShell')
+    def test_collector_with_synthetic_providers(self):
+        result = subprocess.run([shutil.which('powershell.exe'), '-NoProfile', '-NonInteractive', '-ExecutionPolicy', 'Bypass', '-File', str(ROOT / 'tests/collector-smoke.ps1')], capture_output=True, timeout=30, creationflags=subprocess.CREATE_NO_WINDOW)
+        self.assertEqual(result.returncode, 0, result.stderr.decode('utf-8', errors='replace'))
+        snapshot = json.loads(result.stdout.decode('utf-8-sig'))
+        validate_snapshot(snapshot)
+        self.assertTrue(snapshot['synthetic'])
+        self.assertEqual(snapshot['sections']['devices']['data'][0]['problem_code'], 10)
+        self.assertEqual(snapshot['sections']['events']['data'][0]['bugcheck_code'], 159)
+        self.assertEqual(snapshot['sections']['battery_health']['data'][0]['full_to_design_percent'], 90)
+        self.assertEqual(snapshot['sections']['boot']['data'][0]['boot_ms'], 40000)
+        self.assertEqual(snapshot['sections']['security']['status'], 'partial')
+
     def test_offline_pipeline_provenance_and_overwrite_guard(self):
         with tempfile.TemporaryDirectory() as temp:
             cmd = [sys.executable, str(ROOT / 'scripts/doctor.py'), 'analyze', '--input', str(ROOT / 'examples/demo-snapshot.json'), '--out', temp]
