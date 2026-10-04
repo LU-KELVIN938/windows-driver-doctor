@@ -1,0 +1,47 @@
+name: Validate
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  offline:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.10', '3.13']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Behavioral tests
+        run: python -m unittest discover -s tests -v
+      - name: Synthetic demo
+        run: python scripts/doctor.py analyze --input examples/demo-snapshot.json --out work/demo
+  windows-collector:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Parse collector with Windows PowerShell 5.1
+        shell: powershell
+        run: |
+          $parseTokens = $null
+          $parseErrors = $null
+          [System.Management.Automation.Language.Parser]::ParseFile("$pwd/scripts/collect-diagnostics.ps1", [ref]$parseTokens, [ref]$parseErrors) | Out-Null
+          if ($parseErrors.Count -gt 0) { $parseErrors | Format-List; exit 1 }
+      - name: Parse collector with PowerShell 7
+        shell: pwsh
+        run: |
+          $parseTokens = $null
+          $parseErrors = $null
+          [System.Management.Automation.Language.Parser]::ParseFile("$pwd/scripts/collect-diagnostics.ps1", [ref]$parseTokens, [ref]$parseErrors) | Out-Null
+          if ($parseErrors.Count -gt 0) { $parseErrors | Format-List; exit 1 }
+      - name: Bounded live collection on disposable CI runner
+        run: python scripts/doctor.py collect --out work/live --days 1 --max-events 5 --timeout 180
+      - name: Validate collector contract
+        run: python scripts/doctor.py analyze --input work/live/snapshot.json --out work/reanalyzed
